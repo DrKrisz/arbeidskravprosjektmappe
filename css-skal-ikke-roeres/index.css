@@ -1,0 +1,160 @@
+/*
+    CSS skal ikke (trengs ikke) røres!
+*/
+
+body{
+    margin: 0;
+    background-color: rgb(30, 30, 30);
+}
+
+#container{
+    font-family: sans-serif;
+    width: 1200px;
+    height: 660px;
+    background-color: rgb(255, 0, 0);
+    margin: auto;
+
+    background-image: url("../images/bg.jpg");
+    background-size: cover;
+    background-position: bottom;
+    
+    position: relative;
+    overflow: hidden;;
+}
+
+
+/*
+    ***
+    Output div
+    ***
+*/
+#output-div{
+    font-family: sans-serif;
+    padding: 0.5rem;
+    text-align: center;
+    width: 1200px;
+    background-color: rgb(255, 255, 255);
+    margin: auto;
+    box-sizing: border-box;
+}
+
+img{
+    position: absolute;
+}
+
+#william-the-healer, #julia-the-archer, #jack-the-lumberjack, #nameless-knight, #the-cat{
+    cursor: pointer;            
+}
+
+#william-the-healer:hover, #julia-the-archer:hover, #jack-the-lumberjack:hover, #nameless-knight:hover, #the-cat:hover{
+    transform: scale(1.04);
+}   
+
+
+/*
+    Good guys
+*/
+#julia-the-archer{
+    height: 120px;
+    bottom: 5px;
+    left: 200px;
+}
+
+#william-the-healer{
+    height: 90px;
+    bottom: 50px;
+    left: 5px;
+}
+
+#jack-the-lumberjack{
+    height: 100px;
+    bottom: 50px;
+    left: 75px;
+}
+
+#nameless-knight{
+    height: 120px;
+    left: 320px;
+    bottom: 90px;
+}
+
+#the-cat{
+    height: 50px;
+    left: 400px;
+    bottom: 50px;
+}
+
+/*
+    Evil guys
+*/
+#big-boss{
+    height: 500px;
+    right: 100px;
+    bottom: 30px;
+}
+
+.life-bar-container{
+    position: absolute;            
+    height: 50px;
+    width: 200px;
+    background-color: rgb(255, 0, 0);
+    border: 1px solid rgb(50, 50, 50);            
+}
+
+.life-bar-container img{
+    height: 50px;
+    left: -50px;
+}
+
+#nameless-knight-hp-div, #julia-the-archer-hp-div, #the-cat-hp-div{
+    width: 200px;
+    height: 50px;
+    background-color: rgb(90, 180, 90);
+}
+
+#big-boss-hp-div{
+    position: absolute;
+    right: 0;
+}
+
+.knight-container{
+    left: 50px;
+    top: 10px;
+}       
+
+.julia-container{
+    left: 50px;
+    top: 70px;
+}
+
+.cat-container{
+    left: 50px;
+    top: 130px;
+}   
+
+
+/*
+    Big boss container
+*/
+.big-boss-container{
+    right: 50px;
+    top: 10px;
+    width: 300px;
+}        
+
+#big-boss-hp-div{
+    width: 300px;
+    height: 50px;
+    background-color: rgb(190, 190, 90);
+}
+
+.big-boss-container img{
+    left: 300px;
+}
+
+#appearing-monster{
+    width: 100px;
+    border-bottom: 3px solid rgba(150, 50, 50, 0.5);
+    left: 650px;
+    bottom: 40px;
+}
