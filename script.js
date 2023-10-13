@@ -61,6 +61,7 @@ function attackCharacter(characterId, bgColor) {
     console.log(characterId);
     message.className = "message";
     message.style.backgroundColor = bgColor;
+    message.style.padding = "24px";
     document.getElementById("output-div");
 
     checkWinLoss();
@@ -69,11 +70,11 @@ function attackCharacter(characterId, bgColor) {
       var appearingMonster = document.getElementById("appearing-monster");
       appearingMonster.src = "images/" + (Math.random() < 0.5 ? "slime.png" : "bat.png");
       appearingMonster.alt = "Appearing Monster";
-      var monsterMessage = document.createElement("div");
+      var monsterMessage = document.getElementById("output-div");
       monsterMessage.innerHTML = "A Slime or Bat has appeared!";
       monsterMessage.className = "message";
       monsterMessage.style.backgroundColor = "red";
-      document.getElementById("output-div").appendChild(monsterMessage);
+      document.getElementById("output-div");
       attackEnabled = false;
       setTimeout(function () {
         attackEnabled = true;
@@ -89,7 +90,7 @@ function attackCharacter(characterId, bgColor) {
         returnAttackMessage.innerHTML = "Big Boss attacked " + characterData[randomHeroId].name + " for " + heroDamage + " damage!";
         returnAttackMessage.className = "message";
         returnAttackMessage.style.backgroundColor = "red";
-        document.getElementById("output-div").appendChild(returnAttackMessage);
+        document.getElementById("output-div");
         checkWinLoss();
       }, 1000);
     }
@@ -105,7 +106,7 @@ function healCharacter(characterId) {
       characterData[characterId].hp = 200;
     }
     document.getElementById(characterId + "-hp-div").style.width = characterData[characterId].hp + "px";
-    var message = document.createElement("div");
+    var message = document.getElementById("output-div");
     console.log(characterData[characterId].hp);
     message.innerHTML = "William the Healer healed " + characterData[characterId].name + " for " + healAmount + " HP!";
     message.className = "message";
@@ -122,11 +123,11 @@ function healCharacter(characterId) {
 function provideArrowsForJulia() {
   if (characterData["julia-the-archer"].arrows >= 10) {
     arrows = arrows + 5;
-    var message = document.createElement("div");
+    var message = document.getElementById("output-div");
     message.innerHTML = "Jack the Lumberjack provided 5 arrows for Julia!" + "Archer has " + arrows;
     message.className = "message";
     message.style.backgroundColor = "brown";
-    document.getElementById("output-div").appendChild(message);
+    document.getElementById("output-div");
     console.log("lumberjack " + arrows);
   } else {
     console.log("else lumber");
