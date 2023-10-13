@@ -26,11 +26,11 @@ function calculateEffectiveDamage(damage) {
 // du for melding om du vant eller ikke
 function checkWinLoss() {
   if (bigBossHP <= 0) {
-    var winMessage = document.createElement("div");
+    var winMessage = document.getElementById("output-div");
     winMessage.innerHTML = "You won!";
     winMessage.className = "message";
     winMessage.style.backgroundColor = "green";
-    document.getElementById("output-div").appendChild(winMessage);
+    document.getElementById("output-div");
     attackEnabled = false;
   } else {
     var remainingHeroes = Object.keys(characterData).filter((characterId) => characterData[characterId].hp > 0);
@@ -68,7 +68,7 @@ function attackCharacter(characterId, bgColor) {
 
     if (bigBossHP > 0 && Math.random() < 0.25) {
       var appearingMonster = document.getElementById("appearing-monster");
-      appearingMonster.src = "images/" + (Math.random() < 0.5 ? "slime.png" : "bat.png");
+      appearingMonster.src = "images/" + (Math.random() < 1 ? "slime.png" : "bat.png");
       appearingMonster.alt = "Appearing Monster";
       var monsterMessage = document.getElementById("output-div");
       monsterMessage.innerHTML = "A Slime or Bat has appeared!";
@@ -82,7 +82,7 @@ function attackCharacter(characterId, bgColor) {
         appearingMonster.alt = "";
         var heroIds = Object.keys(characterData);
         var randomHeroId = heroIds[Math.floor(Math.random() * heroIds.length)];
-        var heroDamage = Math.floor(Math.random() * 250) + 1;
+        var heroDamage = Math.floor(Math.random() * 200) + 1;
         characterData[randomHeroId].hp -= heroDamage;
         console.log(randomHeroId);
         document.getElementById(randomHeroId + "-hp-div").style.width = characterData[randomHeroId].hp + "px";
