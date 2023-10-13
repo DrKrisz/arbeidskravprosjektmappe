@@ -33,9 +33,7 @@ function checkWinLoss() {
     document.getElementById("output-div").appendChild(winMessage);
     attackEnabled = false;
   } else {
-    var remainingHeroes = Object.keys(characterData).filter(
-      (characterId) => characterData[characterId].hp > 0
-    );
+    var remainingHeroes = Object.keys(characterData).filter((characterId) => characterData[characterId].hp > 0);
     if (remainingHeroes.length === 0) {
       var loseMessage = document.createElement("div");
       loseMessage.innerHTML = "You lost!";
@@ -59,11 +57,7 @@ function attackCharacter(characterId, bgColor) {
     bigBossHP -= effectiveDamage;
     bigBossHPDiv.style.width = bigBossHP + "px";
     var message = document.getElementById("output-div");
-    message.innerHTML =
-      characterData[characterId].name +
-      " attacked the Big Boss for " +
-      effectiveDamage +
-      " damage!";
+    message.innerHTML = characterData[characterId].name + " attacked the Big Boss for " + effectiveDamage + " damage!";
     console.log(characterId);
     message.className = "message";
     message.style.backgroundColor = bgColor;
@@ -73,8 +67,7 @@ function attackCharacter(characterId, bgColor) {
 
     if (bigBossHP > 0 && Math.random() < 0.25) {
       var appearingMonster = document.getElementById("appearing-monster");
-      appearingMonster.src =
-        "images/" + (Math.random() < 0.5 ? "slime.png" : "bat.png");
+      appearingMonster.src = "images/" + (Math.random() < 0.5 ? "slime.png" : "bat.png");
       appearingMonster.alt = "Appearing Monster";
       var monsterMessage = document.createElement("div");
       monsterMessage.innerHTML = "A Slime or Bat has appeared!";
@@ -91,15 +84,9 @@ function attackCharacter(characterId, bgColor) {
         var heroDamage = Math.floor(Math.random() * 250) + 1;
         characterData[randomHeroId].hp -= heroDamage;
         console.log(randomHeroId);
-        document.getElementById(randomHeroId + "-hp-div").style.width =
-          characterData[randomHeroId].hp + "px";
+        document.getElementById(randomHeroId + "-hp-div").style.width = characterData[randomHeroId].hp + "px";
         var returnAttackMessage = document.createElement("div");
-        returnAttackMessage.innerHTML =
-          "Big Boss attacked " +
-          characterData[randomHeroId].name +
-          " for " +
-          heroDamage +
-          " damage!";
+        returnAttackMessage.innerHTML = "Big Boss attacked " + characterData[randomHeroId].name + " for " + heroDamage + " damage!";
         returnAttackMessage.className = "message";
         returnAttackMessage.style.backgroundColor = "red";
         document.getElementById("output-div").appendChild(returnAttackMessage);
@@ -117,16 +104,10 @@ function healCharacter(characterId) {
     if (characterData[characterId].hp > 200) {
       characterData[characterId].hp = 200;
     }
-    document.getElementById(characterId + "-hp-div").style.width =
-      characterData[characterId].hp + "px";
+    document.getElementById(characterId + "-hp-div").style.width = characterData[characterId].hp + "px";
     var message = document.createElement("div");
     console.log(characterData[characterId].hp);
-    message.innerHTML =
-      "William the Healer healed " +
-      characterData[characterId].name +
-      " for " +
-      healAmount +
-      " HP!";
+    message.innerHTML = "William the Healer healed " + characterData[characterId].name + " for " + healAmount + " HP!";
     message.className = "message";
     message.style.backgroundColor = "blue";
     document.getElementById("output-div");
@@ -142,10 +123,7 @@ function provideArrowsForJulia() {
   if (characterData["julia-the-archer"].arrows >= 10) {
     arrows = arrows + 5;
     var message = document.createElement("div");
-    message.innerHTML =
-      "Jack the Lumberjack provided 5 arrows for Julia!" +
-      "Archer has " +
-      arrows;
+    message.innerHTML = "Jack the Lumberjack provided 5 arrows for Julia!" + "Archer has " + arrows;
     message.className = "message";
     message.style.backgroundColor = "brown";
     document.getElementById("output-div").appendChild(message);
@@ -170,8 +148,5 @@ var characterIds = Object.keys(characterData);
 for (var i = 0; i < characterIds.length; i++) {
   var character = document.getElementById(characterIds[i]);
   var bgColor = characterIds[i] === "julia-the-archer" ? "green" : "blue";
-  character.addEventListener(
-    "click",
-    attackCharacter(characterIds[i], bgColor)
-  );
+  character.addEventListener("click", attackCharacter(characterIds[i], bgColor));
 }
