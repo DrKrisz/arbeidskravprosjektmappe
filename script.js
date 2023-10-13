@@ -1,8 +1,8 @@
 // her har jeg laget en "database" for de karatene som er mulig å spille med
 var characterData = {
-  "nameless-knight": { name: "Knight", hp: 100 },
-  "julia-the-archer": { name: "Archer", hp: 100, arrows: 10 },
-  "the-cat": { name: "The Cat", hp: 100 },
+  "nameless-knight": { name: "Knight", hp: 200 },
+  "julia-the-archer": { name: "Archer", hp: 200, arrows: 10 },
+  "the-cat": { name: "The Cat", hp: 200 },
 };
 
 // laget noe variabel for bossen, og angrep
@@ -67,7 +67,7 @@ function attackCharacter(characterId, bgColor) {
     console.log(characterId);
     message.className = "message";
     message.style.backgroundColor = bgColor;
-    document.getElementById("output-div").appendChild(message);
+    document.getElementById("output-div");
 
     checkWinLoss();
 
@@ -88,8 +88,9 @@ function attackCharacter(characterId, bgColor) {
         appearingMonster.alt = "";
         var heroIds = Object.keys(characterData);
         var randomHeroId = heroIds[Math.floor(Math.random() * heroIds.length)];
-        var heroDamage = Math.floor(Math.random() * 25) + 1;
+        var heroDamage = Math.floor(Math.random() * 250) + 1;
         characterData[randomHeroId].hp -= heroDamage;
+        console.log(randomHeroId);
         document.getElementById(randomHeroId + "-hp-div").style.width =
           characterData[randomHeroId].hp + "px";
         var returnAttackMessage = document.createElement("div");
@@ -111,19 +112,15 @@ function attackCharacter(characterId, bgColor) {
 // her for karakterene heal fra William
 function healCharacter(characterId) {
   return function () {
-    if (!attackEnabled) {
-      return;
-    }
-
     var healAmount = Math.floor(Math.random() * 25) + 1;
     characterData[characterId].hp += healAmount;
-    if (characterData[characterId].hp > 100) {
-      characterData[characterId].hp = 100;
+    if (characterData[characterId].hp > 200) {
+      characterData[characterId].hp = 200;
     }
     document.getElementById(characterId + "-hp-div").style.width =
       characterData[characterId].hp + "px";
     var message = document.createElement("div");
-    console.log("william");
+    console.log(characterData[characterId].hp);
     message.innerHTML =
       "William the Healer healed " +
       characterData[characterId].name +
@@ -132,7 +129,7 @@ function healCharacter(characterId) {
       " HP!";
     message.className = "message";
     message.style.backgroundColor = "blue";
-    document.getElementById("output-div").appendChild(message);
+    document.getElementById("output-div");
     attackEnabled = false;
     setTimeout(function () {
       attackEnabled = true;
